@@ -96,19 +96,8 @@
           "foreground": "#f8f8f2",
           "leading_diamond": "\ue0b2",
           "style": "diamond",
-          "template": " {{ .UserName }}@{{ .HostName }} <#26C6DA>\ue0b3</> ",
+          "template": " {{ .UserName }}@{{ .HostName }} <#26C6DA></> ",
           "type": "session"
-        },
-        {
-          "background": "#6272a4",
-          "foreground": "#f8f8f2",
-          "properties": {
-            "time_format": "15:04:05"
-          },
-          "style": "diamond",
-          "trailing_diamond": "\ue0b4",
-          "template": "{{ .CurrentDate | date .Format }} \uf017 ",
-          "type": "time"
         }
       ],
       "type": "prompt"

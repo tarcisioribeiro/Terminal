@@ -1,98 +1,223 @@
-# Instalando o Ubuntu no WSL
+# Instalação do Ubuntu 22.04
 
-- Agora, siga executando um a um os comandos abaixo:
+## Atualizando repositórios
 
-    `sudo apt update`
+* Execute os comandos abaixo para atualizar os repositórios e programas:
 
-    `sudo apt full-upgrade -y`
+        sudo apt update
+        sudo apt upgrade -y
+        sudo apt install nala
 
-    `mkdir repos`
+## Instalando pacotes essenciais
 
-- Instale os pacotes necessários através deste comando:
+* Instale os pacotes essenciais:
 
-    `sudo apt install build-essential nautilus gedit gnome-tweaks unzip python3 python3-pip python-is-python3 yaru-theme-gnome-shell yaru-theme-gtk yaru-theme-icon yaru-theme-sound nodejs npm php screenfetch net-tools font-manager -y`
+        sudo nala install build-essential git neofetch curl tilix neovim wget mysql-server net-tools btop flatpak gnome-software-plugin-flatpak p7zip-full p7zip-rar gnome-tweaks gnome-shell-extension-manager python3-venv python3-pip python3.10-full python3.10-dev dkms perl gcc make default-libmysqlclient-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev llvm xz-utils tk-dev libffi-dev liblzma-dev python3-openssl ubuntu-restricted-extras timeshift bat gnome-sushi gdebi libreoffice thunderbird ruby-full nodejs npm fzf
 
-A partir de agora, iremos instalar o Windows Terminal e configurar o perfil do Ubuntu.
+## Atualizando o NodeJS
 
-- Realizar o download do Windows Terminal na Microsoft Store;
-- Abrir o Windows Terminal, e definir o Ubuntu como padrão.
+* Execute os comandos abaixo para atualizar o **NodeJS** e **NPM**:
 
-Partindo para as últimas configurações, abra o Ubuntu e execute os seguintes comandos para adicionar o Oh-My-Posh:
+        sudo npm install npm@latest -g
+        sudo npm install -g typescript
 
-- Estes comandos abaixo devem ser executados um a um:
+## Configurando o servidor MySQL
 
-    `sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh`
+* Execute os dois comandos abaixo para habilitar o acesso ao **MySQL** como root:
 
-    `sudo chmod +x /usr/local/bin/oh-my-posh`
+        sudo mysql
+        ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'orrARDrdr27!';
 
-- Crie as pastas e copie os arquivos:
+## Instalando e tornando o ZSH padrão
 
-    `mkdir ~/.poshthemes`
+* Execute os comandos abaixo para instalar e tornar o **ZSH** padrão:
 
-    `wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip`
+        sudo nala install zsh -y
+        chsh -s /usr/bin/zsh
+        zsh
 
-    `unzip ~/.poshthemes/themes.zip -d ~/.poshthemes`
+## Instalando o Oh My ZSH
 
-    `chmod u+rw ~/.poshthemes/*.omp.*`
+* Execute os comandos abaixo para instalar o **Oh My ZSH**:
 
-    `rm ~/.poshthemes/themes.zip`
+        sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+        git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+        git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-- Configure o git:
+## Instalando o Oh My Posh
 
-    `git config --global user.name ""`
+* Execute os comandos abaixo para instalar o **Oh My Posh**:
 
-    `git config --global user.email ""`
+        sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
+        sudo chmod +x /usr/local/bin/oh-my-posh
+        mkdir ~/.poshthemes
+        wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/themes.zip -O ~/.poshthemes/themes.zip
+        unzip ~/.poshthemes/themes.zip -d ~/.poshthemes
+        chmod u+rw ~/.poshthemes/*.omp.*
+        rm ~/.poshthemes/themes.zip
 
-- Navegue para o diretório de repositórios, e clone o seguinte link, após isso copie o arquivo **tj-linux.omp.json**, que está na pasta Customization:
+## Configurando o git
 
-    `cd ~`
+* Comandos para configurar o **git**:
 
-    `cd repos`
+        git config --global user.name "tarcisioribeiro" && git config --global user.email "tarcisio.ribeiro.1840@hotmail.com"
 
-    `git clone https://github.com/tarcisioribeiro/WinTerminal_OhMyPosh.git`
+## Criando diretórios e clonando repositórios
 
-    `cd WinTerminal_OhMyPosh`
+* Execute os comandos abaixo para configurar os diretórios e baixar os repositórios:
 
-    `cd Customization`
+        cd ~ && mkdir repos .icons .themes && cd repos
+        git clone https://github.com/tarcisioribeiro/Terminal.git
+        git clone https://github.com/tarcisioribeiro/Finances_Controller.git
 
-    `cd Bash`
+## Instalando o logo-ls
 
-    `cp tj-linux.omp.json /home/$USER/.poshthemes`
+* Comandos para instalar o **logo-ls**:
 
-    `cd ~`
+        cd ~
+        cp repos/Terminal/Customization/Bash/tj-linux.omp.json /home/tarcisio/.poshthemes
+        cp repos/Terminal/Customization/Bash/logo-ls_Linux_x86_64.tar.gz ~/Downloads
+        cd ~/Downloads
+        tar -zxf logo-ls_Linux_x86_64.tar.gz
+        cd ~/Downloads/logo-ls_Linux_x86_64
+        sudo cp logo-ls /usr/local/bin
 
-- Edite o .bashrc:
+## Configurando o ZSH
 
-    `nano .bashrc`
+* Editando o arquivo de inicialização:
 
-- Adicione a seguinte linha ao final do arquivo e salve o arquivo:
+        cd ~
+        nano .zshrc
 
-   `eval "$(oh-my-posh init bash --config ~/.poshthemes/tj-linux.omp.json)"`
+* Comente a linha **ZSH_THEME**;
 
-- Recarregue o terminal:
+* Adicione o restante ao arquivo **.zshrc**:
 
-    `exec bash`
+        plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
 
-- Copie o arquivo logo-ls para o diretório bin:
+        if [ -f ~/.zsh_aliases ]; then
+            . ~/.zsh_aliases
+        fi
 
-    `cd ~`
+        eval "$(oh-my-posh init zsh --config ~/.poshthemes/dracula.omp.json)"
 
-    `cd repos`
+## Criando os aliases
 
-    `cd WinTerminal_OhMyPosh`
 
-    `cd Customization`
+* Comandos para criar os **aliases**:
 
-    `cd Bash`
+        touch .zsh_aliases
+        echo "alias ls='logo-ls'" >> .zsh_aliases
+        echo "alias py='python3'" >> .zsh_aliases
+        echo "alias cls='clear'" >> .zsh_aliases
+        echo "alias ipconfig='ifconfig'" >> .zsh_aliases
+        echo "alias mysql='mysql -uroot -porrARDrdr27!'" >> .zsh_aliases
+        echo "alias mysqldump='mysqldump -uroot -porrARDrdr27!'" >> .zsh_aliases
+        echo "alias bat='batcat --theme="Dracula"'" >> .zsh_aliases
+        echo "alias vim='nvim'" >> .zsh_aliases
+        echo "alias ssh_smartphone='ssh u0_a4@192.168.2.101 -p 8022'" >> .zsh_aliases
+        echo "alias eza='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'" >> .zsh_aliases
+        echo "alias tree='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --tree'" >> .zsh_aliases
 
-    `cp logo-ls_Linux_x86_64.tar.gz $HOME`
 
-    `cd ~`
+## Configurando monitores
 
-    `tar -zxf logo-ls_Linux_x86_64.tar.gz`
+* Criando pastas:
 
-    `cd logo-ls_Linux_x86_64`
+        cd ~
+        mkdir scripts
+        cd .config && mkdir autostart
+        cd ~/scripts
 
-    `sudo cp logo-ls /usr/local/bin`
+* Criando o executável:
 
-    `cd ~`
+        touch nvidia-force-full-composition.sh
+        echo '#!/bin/bash' >> nvidia-force-full-composition.sh
+        echo "nvidia-settings --assign CurrentMetaMode="$(nvidia-settings -q CurrentMetaMode -t|tr '\n' ' '|sed -e 's/.*:: \(.*\)/\1\n/g' -e 's/}/, ForceCompositionPipeline = On, ForceFullCompositionPipeline=On}/g')" > /dev/null" >> nvidia-force-full-composition.sh
+        sudo chmod +x nvidia-force-full-composition.sh
+
+* Criando o atalho:
+
+        cd ~/.config/autostart
+        touch nvidia-force-full-composition.desktop
+        echo '[Desktop Entry]' >> nvidia-force-full-composition.desktop
+        echo 'Type=Application' >> nvidia-force-full-composition.desktop
+        echo 'Name=nvidia-force-full-compositon' >> nvidia-force-full-composition.desktop
+        echo 'Exec=/home/tarcisio/scripts/nvidia-force-full-composition.sh' >> nvidia-force-full-composition.desktop
+        sudo chmod +x nvidia-force-full-composition.desktop
+
+## Configurando o terminal Tilix
+
+* Comandos para baixar o tema 'Dracula' para o **Tilix**:
+
+        cd ~/.config && mkdir tilix && cd tilix && mkdir schemes
+        wget  -qO $HOME"/.config/tilix/schemes/dracula.json" https://git.io/v7QaT
+
+## Configurando o Flatpak
+
+* Instalando programas via **Flatpak**:
+
+        flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+        sudo reboot now
+        flatpak install flathub org.videolan.VLC
+        flatpak install flathub com.obsproject.Studio
+        flatpak install flathub io.github.shiftey.Desktop
+
+## Removendo pacotes indesejados
+
+* Remova os seguintes pacotes:
+
+        sudo nala remove libmagickcore-6.q16-6 imagemagick-6.q16 imagemagick-6-common imagemagick idle-python3.10
+
+## Instalando o neovim
+
+* Comandos para baixar o **Neovim**:
+
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+        sudo rm -rf /opt/nvim
+        sudo tar -C /opt -xzf nvim-linux64.tar.gz
+
+* Adicionar ao .zshrc:
+
+        export PATH="$PATH:/opt/nvim-linux64/bin"
+
+## Atualizando o NodeJS
+
+* Comandos para atualizar o **NodeJS**:
+
+        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+        source ~/.zshrc
+        nvm install 20.17.0
+
+## Instalando o Homebrew
+
+* Comando para baixar o **Brew**:    
+    
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+* Adicione ao **.zshrc**:
+
+        eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+        echo 'export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"' >> ~/.zshrc
+
+## Instalando TPM
+
+* Instalando o TPM:
+
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+* Configurando o tmux:
+
+        nvim .tmux.conf
+
+* Adicione o seguinte conteúdo ao arquivo:
+
+        set -g @plugin 'tmux-plugins/tpm'
+        set -g @plugin 'tmux-plugins/tmux-sensible'
+        run '~/.tmux/plugins/tpm/tpm'
+
+## Instalando pacotes do Glow
+
+* Instale os pacotes **Brew**:
+
+        brew install eza glow
