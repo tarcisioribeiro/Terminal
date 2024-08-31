@@ -42,7 +42,7 @@
         },
         {
           "background": "#ffb86c",
-          "foreground": "#f8f8f2",
+          "foreground": "#2e2e2e",
           "powerline_symbol": "\ue0b0",
           "properties": {
             "branch_icon": "",
@@ -61,11 +61,19 @@
             "fetch_version": false
           },
           "background": "#6CA35E",
-          "foreground": "#ffffff",
+          "foreground": "#f8f8f2",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
           "template": " \ue718 {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }}",
           "type": "node"
+        },
+        {
+          "type": "npm",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#193549",
+          "background": "#ffeb3b",
+          "template": " {{ .Full }} "
         },
         {
           "properties": {
@@ -74,11 +82,27 @@
             "fetch_version": false
           },
           "background": "#906cff",
-          "foreground": "#ffffff",
+          "foreground": "#f8f8f2",
           "powerline_symbol": "\ue0b0",
           "style": "powerline",
-          "template": " \uE235 {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "template": " \uE235{{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} ",
           "type": "python"
+        },
+        {
+          "type": "dart",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#f8f8f2",
+          "background": "#06A4CE",
+          "template": "  {{ .Full }} "
+        },
+        {
+          "type": "flutter",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "#06A4CE",
+          "background": "#f8f8f2",
+          "template": "  {{ .Full }} "
         },
         {
           "type": "text",
@@ -92,11 +116,46 @@
       "alignment": "right",
       "segments": [
         {
+          "type": "status",
+          "style": "diamond",
+          "foreground": "#f8f8f2",
+          "background": "#00897b",
+          "background_templates": [
+            "{{ if .Error }}#e91e63{{ end }}"
+          ],
+          "leading_diamond": "\ue0b2",
+          "template": "<#193549></>  ",
+          "properties": {
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "diamond",
+          "foreground": "#f8f8f2",
+          "background": "#8800dd",
+          "leading_diamond": "\ue0b2",
+          "template": " <#fefefe></> {{ .FormattedMs }} ",
+          "properties": {
+            "threshold": 500,
+            "style": "austin",
+            "always_enabled": true
+          }
+        },
+        {
+          "type": "shell",
+          "style": "diamond",
+          "background": "#bd93f9",
+          "foreground": "#f8f8f2",
+          "leading_diamond": "\ue0b2"
+        },
+        {
           "background": "#6272a4",
           "foreground": "#f8f8f2",
           "leading_diamond": "\ue0b2",
+          "trailing_diamond": "\ue0b4",
           "style": "diamond",
-          "template": " {{ .UserName }}@{{ .HostName }} <#26C6DA></> ",
+          "template": " {{ .UserName }}@{{ .HostName }}<#26C6DA></>",
           "type": "session"
         }
       ],

@@ -1,0 +1,32 @@
+# Terminal Tools
+alias ls='logo-ls'
+alias cls='clear'
+alias bat='batcat --theme="Dracula"'
+alias glow='glow -p'
+alias eza='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'
+alias tree='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --tree'
+alias matrix='cmatrix'
+
+# Languages
+alias py='python3'
+
+# Net Tools
+alias ipconfig='ifconfig'
+
+# MySQL
+alias mysql='mysql -uroot -p"password"'
+alias mysqldump='mysqldump -uroot -p"password"'
+
+# SSH
+alias ssh_server='ssh serveruser@server_ip'
+
+# Code editing
+alias vim='nvim'
+
+# ZSH
+alias edit-zsh="nvim ~/.zshrc"
+alias reload-zsh="source ~/.zshrc"
+
+# Files Managing and navigation
+alias rm='rmtrash'
+alias rmdir='rmdirtrash'
