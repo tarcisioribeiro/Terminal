@@ -1,4 +1,5 @@
 # Terminal Tools
+# rrARDrdr27!
 alias ls='logo-ls'
 alias cls='clear'
 alias bat='batcat --theme="Dracula"'
@@ -14,11 +15,14 @@ alias py='python3'
 alias ipconfig='ifconfig'
 
 # MySQL
-alias mysql='mysql -uroot -p"password"'
-alias mysqldump='mysqldump -uroot -p"password"'
+alias mysql='mysql -uroot -porrARDrdr27!'
+alias mysqldump='mysqldump -uroot -porrARDrdr27!'
+
+# VirtualBox
 
 # SSH
-alias ssh_server='ssh serveruser@server_ip'
+alias ssh_smartphone='ssh u0_a4@192.168.2.101 -p 8022'
+alias ssh_server='ssh serveruser@192.168.2.105'
 
 # Code editing
 alias vim='nvim'
