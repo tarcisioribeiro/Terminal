@@ -1,0 +1,23 @@
+[user]
+	name = tarcisioribeiro
+  email = tarcisio.ribeiro.1840@hotmail.com
+
+[init]
+  defaultBranch = main
+
+[core]
+  editor = nvim
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default

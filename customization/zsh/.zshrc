@@ -44,8 +44,6 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-source ~/scripts/fzf-git.sh
-
 . /usr/share/doc/fzf/examples/key-bindings.zsh
 
 show_file_or_dir_preview="if [ -d {} ]; then eza --tree --icons --color=always {} | head -200; else batcat -n --color=always --line-range :500 {}; fi"
@@ -66,6 +64,6 @@ _fzf_comprun() {
   esac
 }
 
-. "$HOME/.cargo/env"
-
+export CHROME_EXECUTABLE="/usr/bin/firefox"
+export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:$HOME/development/flutter/bin"

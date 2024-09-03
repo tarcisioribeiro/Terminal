@@ -6,7 +6,6 @@ alias bat='batcat --theme="Dracula"'
 alias glow='glow -p'
 alias eza='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions'
 alias tree='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions --tree'
-alias matrix='cmatrix'
 
 # Languages
 alias py='python3'
@@ -18,19 +17,9 @@ alias ipconfig='ifconfig'
 alias mysql='mysql -uroot -porrARDrdr27!'
 alias mysqldump='mysqldump -uroot -porrARDrdr27!'
 
-# VirtualBox
-
-# SSH
-alias ssh_smartphone='ssh u0_a4@192.168.2.101 -p 8022'
-alias ssh_server='ssh serveruser@192.168.2.105'
-
 # Code editing
 alias vim='nvim'
 
 # ZSH
 alias edit-zsh="nvim ~/.zshrc"
 alias reload-zsh="source ~/.zshrc"
-
-# Files Managing and navigation
-alias rm='rmtrash'
-alias rmdir='rmdirtrash'

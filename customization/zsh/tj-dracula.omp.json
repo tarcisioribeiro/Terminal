@@ -71,9 +71,9 @@
           "type": "npm",
           "style": "powerline",
           "powerline_symbol": "",
-          "foreground": "#193549",
-          "background": "#ffeb3b",
-          "template": " {{ .Full }} "
+          "foreground": "#ffeb3b",
+          "background": "#193549",
+          "template": "  {{ .Full }} "
         },
         {
           "properties": {
@@ -94,7 +94,10 @@
           "powerline_symbol": "",
           "foreground": "#f8f8f2",
           "background": "#06A4CE",
-          "template": "  {{ .Full }} "
+          "template": "  {{ .Full }}",
+          "properties": {
+            "fetch_version": false
+          }
         },
         {
           "type": "flutter",
@@ -102,7 +105,10 @@
           "powerline_symbol": "",
           "foreground": "#06A4CE",
           "background": "#f8f8f2",
-          "template": "  {{ .Full }} "
+          "template": "  {{ .Full }}",
+          "properties": {
+            "fetch_version": false
+          }
         },
         {
           "type": "text",
@@ -132,10 +138,10 @@
         {
           "type": "executiontime",
           "style": "diamond",
-          "foreground": "#f8f8f2",
-          "background": "#8800dd",
+          "foreground": "#bd93f9",
+          "background": "#f8f8f2",
           "leading_diamond": "\ue0b2",
-          "template": " <#fefefe></> {{ .FormattedMs }} ",
+          "template": " <#121113></> {{ .FormattedMs }} ",
           "properties": {
             "threshold": 500,
             "style": "austin",
@@ -147,16 +153,8 @@
           "style": "diamond",
           "background": "#bd93f9",
           "foreground": "#f8f8f2",
-          "leading_diamond": "\ue0b2"
-        },
-        {
-          "background": "#6272a4",
-          "foreground": "#f8f8f2",
           "leading_diamond": "\ue0b2",
-          "trailing_diamond": "\ue0b4",
-          "style": "diamond",
-          "template": " {{ .UserName }}@{{ .HostName }}<#26C6DA></>",
-          "type": "session"
+          "trailing_diamond": "\ue0b4"
         }
       ],
       "type": "prompt"
