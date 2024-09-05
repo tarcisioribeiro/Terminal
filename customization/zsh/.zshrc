@@ -64,6 +64,6 @@ _fzf_comprun() {
   esac
 }
 
-export CHROME_EXECUTABLE="/usr/bin/firefox"
 export PATH="$PATH:$HOME/.local/bin"
-export PATH="$PATH:$HOME/development/flutter/bin"
+export CLASSPATH=$HOME/scripts/mysql-connector-j-9.0.0.jar:. 
+
