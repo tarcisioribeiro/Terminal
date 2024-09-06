@@ -17,15 +17,14 @@ alias ipconfig='ifconfig'
 alias mysql='mysql -uroot -porrARDrdr27!'
 alias mysqldump='mysqldump -uroot -porrARDrdr27!'
 
-# Code editing
-alias vim='nvim'
-
 # ZSH
 alias edit-zsh="nvim ~/.zshrc"
 alias reload-zsh="source ~/.zshrc"
 
 # Virtualbox
 alias ssh_server="ssh serveruser@192.168.122.217"
+alias ssh_kali="ssh kali@192.168.122.166"
+alias start_kali="virsh start KaliLinux"
 alias start_server="virsh start UbuntuServer"
 
 # Termux

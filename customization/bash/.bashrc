@@ -1,12 +1,55 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If not running interactively, don't do anything
+# Enable the subsequent settings only in interactive sessions
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+    *) return;;
 esac
+
+# Path to your oh-my-bash installation.
+export OSH='/home/tarcisio/.oh-my-bash'
+
+# OSH_THEME="agnoster"
+# OMB_CASE_SENSITIVE="true"
+# OMB_HYPHEN_SENSITIVE="false"
+# DISABLE_AUTO_UPDATE="true"
+# export UPDATE_OSH_DAYS=13
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+ENABLE_CORRECTION="true"
+# COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# SCM_GIT_DISABLE_UNTRACKED_DIRTY="true"
+# SCM_GIT_IGNORE_UNTRACKED="true"
+
+# Uncomment the following line if you do not want OMB to overwrite the existing
+# aliases by the default OMB aliases defined in lib/*.sh
+# OMB_DEFAULT_ALIASES="check"
+
+# Would you like to use another custom folder than $OSH/custom?
+# OSH_CUSTOM=/path/to/new-custom-folder
+
+# To disable the uses of "sudo" by oh-my-bash, please set "false" to
+# this variable.  The default behavior for the empty value is "true".
+OMB_USE_SUDO=true
+
+# OMB_PROMPT_SHOW_PYTHON_VENV=true  # enable
+# OMB_PROMPT_SHOW_PYTHON_VENV=false # disable
+
+completions=(
+  git
+  composer
+  ssh
+)
+
+aliases=(
+  general
+)
+
+plugins=(
+  git
+  bashmarks
+)
+
+source "$OSH"/oh-my-bash.sh
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
@@ -96,18 +139,14 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -116,10 +155,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(oh-my-posh init bash --config ~/.poshthemes/tj-linux.omp.json)"
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# eval "$(oh-my-posh init bash --config ~/.poshthemes/tj-linux.omp.json)"
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
@@ -137,4 +173,10 @@ _fzf_compgen_dir() {
 }
 
 . /usr/share/doc/fzf/examples/key-bindings.bash
-. "$HOME/.cargo/env"
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$PATH:~/.local/bin"
+
+eval "$(starship init bash)"
+
+eval `dircolors $HOME/.dir_colors/dircolors`
