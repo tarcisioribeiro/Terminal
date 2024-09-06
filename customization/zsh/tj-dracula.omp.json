@@ -89,28 +89,6 @@
           "type": "python"
         },
         {
-          "type": "dart",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#f8f8f2",
-          "background": "#06A4CE",
-          "template": "  {{ .Full }}",
-          "properties": {
-            "fetch_version": false
-          }
-        },
-        {
-          "type": "flutter",
-          "style": "powerline",
-          "powerline_symbol": "",
-          "foreground": "#06A4CE",
-          "background": "#f8f8f2",
-          "template": "  {{ .Full }}",
-          "properties": {
-            "fetch_version": false
-          }
-        },
-        {
           "type": "text",
           "style": "plain",
           "foreground": "#ffffff"
