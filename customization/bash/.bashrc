@@ -178,5 +178,3 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:~/.local/bin"
 
 eval "$(starship init bash)"
-
-eval `dircolors $HOME/.dir_colors/dircolors`

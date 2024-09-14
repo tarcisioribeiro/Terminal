@@ -66,4 +66,4 @@ _fzf_comprun() {
 
 export PATH="$PATH:$HOME/.local/bin"
 export CLASSPATH=$HOME/scripts/mysql-connector-j-9.0.0.jar:. 
-
+export EDITOR=nvim

@@ -18,7 +18,7 @@ alias mysql='mysql -uroot -porrARDrdr27!'
 alias mysqldump='mysqldump -uroot -porrARDrdr27!'
 
 # Code editing
-alias vim='nvim'
+# alias vim='nvim'
 
 # ZSH
 alias edit-bash="nvim ~/.bashrc"
