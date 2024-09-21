@@ -116,8 +116,8 @@
         {
           "type": "executiontime",
           "style": "diamond",
-          "foreground": "#bd93f9",
-          "background": "#f8f8f2",
+          "foreground": "#f8f8f2",
+          "background": "#bd93f9",
           "leading_diamond": "\ue0b2",
           "template": " <#121113></> {{ .FormattedMs }} ",
           "properties": {
@@ -129,8 +129,8 @@
         {
           "type": "shell",
           "style": "diamond",
-          "background": "#bd93f9",
-          "foreground": "#f8f8f2",
+          "background": "#2e2e2e",
+          "foreground": "#ffb86c",
           "leading_diamond": "\ue0b2",
           "trailing_diamond": "\ue0b4"
         }
