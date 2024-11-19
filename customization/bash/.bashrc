@@ -176,5 +176,6 @@ _fzf_compgen_dir() {
 
 export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH="$PATH:~/.local/bin"
+export EDITOR=nvim
 
 eval "$(starship init bash)"
