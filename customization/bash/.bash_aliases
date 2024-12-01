@@ -17,6 +17,9 @@ alias ipconfig='ifconfig'
 alias mysql='mysql -uroot -porrARDrdr27!'
 alias mysqldump='mysqldump -uroot -porrARDrdr27!'
 
+# Postgres SQL
+alias postgres="sudo -i -u postgres"
+
 # Code editing
 # alias vim='nvim'
 
