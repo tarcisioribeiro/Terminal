@@ -38,7 +38,6 @@ mkdir -p ~/repos
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 cd ~/repos
-git clone https://github.com/tarcisioribeiro/Terminal.git
 sleep 3
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
 sleep 3
@@ -62,9 +61,6 @@ mkdir -p ~/.config/autostart
 sleep 1
 cp repos/Terminal/customization/starship/starship.toml ~/.config
 
-mkdir -p ~/scripts
-cp /mnt/sda1/scripts/zsh-syntax-highlighting.sh ~/scripts
-
 cd ~
 cp repos/Terminal/customization/zsh/tj-dracula.omp.json /home/tarcisio/.poshthemes
 sleep 1
@@ -78,33 +74,11 @@ cd ~/Downloads/logo-ls_Linux_x86_64
 sleep 1
 sudo cp logo-ls /usr/local/bin
 
-cd ~
-cd .config && mkdir autostart
-
-cd ~/scripts
-touch nvidia-force-full-composition.sh
-echo '#!/bin/bash' >> nvidia-force-full-composition.sh
-echo "nvidia-settings --assign CurrentMetaMode="$(nvidia-settings -q CurrentMetaMode -t|tr '\n' ' '|sed -e 's/.*:: \(.*\)/\1\n/g' -e 's/}/, ForceCompositionPipeline = On, ForceFullCompositionPipeline=On}/g')" > /dev/null" >> nvidia-force-full-composition.sh
-sudo chmod +x nvidia-force-full-composition.sh
-
-cd ~/.config/autostart
-touch nvidia-force-full-composition.desktop
-echo '[Desktop Entry]' >> nvidia-force-full-composition.desktop
-echo 'Type=Application' >> nvidia-force-full-composition.desktop
-echo 'Name=nvidia-force-full-compositon' >> nvidia-force-full-composition.desktop
-echo 'Exec=/home/tarcisio/scripts/nvidia-force-full-composition.sh' >> nvidia-force-full-composition.desktop
-sudo chmod +x nvidia-force-full-composition.desktop
-
-cd ~/.config && mkdir tilix && cd tilix && mkdir schemes
-wget  -qO $HOME"/.config/tilix/schemes/dracula.json" https://git.io/v7QaT
-
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-
-sleep 10
+sleep 5
 
 sudo nala remove libmagickcore-6.q16-6 imagemagick-6.q16 imagemagick-6-common imagemagick idle-python3.10
 
-sleep 10
+sleep 5
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
@@ -120,7 +94,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 source ~/.zshrc
 
 brew install eza glow tldr fd git-delta
-sleep 10
+sleep 5
 nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 sleep 1

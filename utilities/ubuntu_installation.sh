@@ -38,7 +38,6 @@ mkdir -p ~/repos
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 cd ~/repos
-git clone https://github.com/tarcisioribeiro/Terminal.git
 sleep 3
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
 sleep 3
@@ -100,11 +99,11 @@ wget  -qO $HOME"/.config/tilix/schemes/dracula.json" https://git.io/v7QaT
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
-sleep 10
+sleep 5
 
 sudo nala remove libmagickcore-6.q16-6 imagemagick-6.q16 imagemagick-6-common imagemagick idle-python3.10
 
-sleep 10
+sleep 5
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
@@ -120,7 +119,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 source ~/.zshrc
 
 brew install eza glow tldr fd git-delta
-sleep 10
+sleep 5
 nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 sleep 1
