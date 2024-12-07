@@ -1,21 +1,3 @@
-sudo apt update
-sudo apt upgrade -y
-sudo apt install nala -y
-
-sleep 1
-
-sudo nala install build-essential git neofetch curl wget mysql-server net-tools btop python3-venv python3-pip python3.10-full python3.10-dev dkms perl gcc make default-libmysqlclient-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev llvm xz-utils tk-dev libffi-dev liblzma-dev python3-openssl bat ruby-full nodejs npm fzf -y
-
-clear
-
-sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'orrARDrdr27!';"
-
-sudo nala install zsh -y
-chsh -s /usr/bin/zsh
-zsh
-
-clear
-
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 sleep 1
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -56,10 +38,6 @@ cp repos/Terminal/customization/zsh/.zshrc ~
 sleep 1
 cp repos/Terminal/customization/zsh/.zsh_aliases ~
 sleep 1
-cp repos/Terminal/customization/bash/.bashrc ~
-sleep 1
-cp repos/Terminal/customization/bash/.bash_aliases ~
-sleep 1
 cp repos/Terminal/customization/git/.gitconfig ~
 sleep 1
 cp repos/Terminal/customization/tmux/.tmux.conf ~
@@ -93,29 +71,3 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 sleep 1
-
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
-
-clear
-
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-clear
-
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-source ~/.zshrc
-
-brew install eza glow tldr fd git-delta
-sleep 5
-nvm install 20.17.0
-git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
-clear
-sleep 1
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
-sleep 1
-curl -sS https://starship.rs/install.sh | sh
-sleep 1
-mv ~/.config/nvim ~/.config/nvim_old
-sleep 1
-cp -r ~/repos/Terminal/customization/nvim ~/.config
