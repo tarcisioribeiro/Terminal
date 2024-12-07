@@ -1,10 +1,12 @@
 sudo apt update
 sudo apt upgrade -y
-sudo apt install nala
+sudo apt install nala -y
 
 sleep 1
 
-sudo nala install build-essential git neofetch curl wget mysql-server net-tools btop python3-venv python3-pip python3.10-full python3.10-dev dkms perl gcc make default-libmysqlclient-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev llvm xz-utils tk-dev libffi-dev liblzma-dev python3-openssl bat ruby-full nodejs npm fzf
+sudo nala install build-essential git neofetch curl wget mysql-server net-tools btop python3-venv python3-pip python3.10-full python3.10-dev dkms perl gcc make default-libmysqlclient-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev libncurses5-dev libncursesw5-dev llvm xz-utils tk-dev libffi-dev liblzma-dev python3-openssl bat ruby-full nodejs npm fzf -y
+
+clear
 
 sudo mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'orrARDrdr27!';"
 
@@ -12,12 +14,15 @@ sudo nala install zsh -y
 chsh -s /usr/bin/zsh
 zsh
 
+clear
+
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-sleep 3
+sleep 1
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-sleep 3
+sleep 1
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-sleep 3
+sleep 1
+clear
 
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 sleep 1
@@ -32,17 +37,19 @@ sleep 1
 chmod u+rw ~/.poshthemes/*.omp.*
 sleep 1
 rm ~/.poshthemes/themes.zip
+clear
 
 cd ~
 mkdir -p ~/repos
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 cd ~/repos
-sleep 3
+sleep 1
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
-sleep 3
+sleep 1
 git clone https://github.com/tarcisioribeiro/Password_Manager.git
-sleep 3
+sleep 1
+clear
 
 cd ~
 cp repos/Terminal/customization/zsh/.zshrc ~
@@ -78,6 +85,8 @@ sleep 5
 
 sudo nala remove libmagickcore-6.q16-6 imagemagick-6.q16 imagemagick-6-common imagemagick idle-python3.10
 
+clear
+
 sleep 5
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
@@ -87,7 +96,11 @@ sleep 1
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
+clear
+
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+clear
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -97,6 +110,7 @@ brew install eza glow tldr fd git-delta
 sleep 5
 nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
+clear
 sleep 1
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 sleep 1
