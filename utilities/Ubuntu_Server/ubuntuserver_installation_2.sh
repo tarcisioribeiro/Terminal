@@ -18,23 +18,26 @@ cd ~/repos
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
 git clone https://github.com/tarcisioribeiro/Password_Manager.git
 
-cd ~
-cp repos/Terminal/customization/zsh/.zshrc ~
-cp repos/Terminal/customization/zsh/.zsh_aliases ~
-cp repos/Terminal/customization/git/.gitconfig ~
-cp repos/Terminal/customization/tmux/.tmux.conf ~
+cp ~/repos/Terminal/customization/zsh/.zshrc ~
+cp ~/repos/Terminal/customization/zsh/.zsh_aliases ~
+cp ~/repos/Terminal/customization/git/.gitconfig ~
+cp ~/repos/Terminal/customization/tmux/.tmux.conf ~
 mkdir -p ~/.config/autostart
-cp repos/Terminal/customization/starship/starship.toml ~/.config
+cp ~/repos/Terminal/customization/starship/starship.toml ~/.config
 
-cp repos/Terminal/customization/zsh/tj-dracula.omp.json /home/tarcisio/.poshthemes
-cp repos/Terminal/customization/bash/logo-ls_Linux_x86_64.tar.gz ~/Downloads
+cp ~/repos/Terminal/customization/zsh/tj-dracula.omp.json /home/serveruser/.poshthemes
+cp ~/repos/Terminal/customization/bash/logo-ls_Linux_x86_64.tar.gz ~/Downloads
 cd ~/Downloads
 tar -zxf logo-ls_Linux_x86_64.tar.gz
 cd ~/Downloads/logo-ls_Linux_x86_64
 sudo cp logo-ls /usr/local/bin
+cd ~/Downloads
+rm logo-ls_Linux_x86_64.tar.gz
+sudo rm -r logo-ls_Linux_x86_64/
 
 sudo nala remove libmagickcore-6.q16-6 imagemagick-6.q16 imagemagick-6-common imagemagick idle-python3.10 -y
 
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
+rm nvim-linux64.tar.gz
