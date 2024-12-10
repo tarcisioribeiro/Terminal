@@ -15,6 +15,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
+cp ~/repos/Terminal/customization/bash/.bashrc ~
+cp ~/repos/Terminal/customization/bash/.bash_aliases ~
+
 blue "\nSaia do zsh pelo comando exit e carregue o bash.\n"
 
 sleep 5

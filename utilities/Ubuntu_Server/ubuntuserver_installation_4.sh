@@ -10,6 +10,12 @@ blue() {
     echo -e "\033[34m$1\033[0m"
 }
 
+cd ~
+mkdir scripts && cd scripts
+git clone https://github.com/dracula/zsh-syntax-highlighting.git
+cp zsh-syntax-highlighting/zsh-syntax-highlighting.sh .
+sudo rm -r zsh-syntax-highlighting
+
 brew install eza glow tldr fd git-delta
 nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
