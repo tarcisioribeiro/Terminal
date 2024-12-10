@@ -1,6 +1,23 @@
+red() {
+    echo -e "\033[31m$1\033[0m"
+}
+green() {
+    echo -e "\033[32m$1\033[0m"
+}
+
+blue() {
+    echo -e "\033[34m$1\033[0m"
+}
+
+blue "\nInstalando o OH-My-ZSH..\n"
+
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+sleep 1
+
+blue "\nInstalando o Oh My Posh!\n"
 
 sudo wget https://github.com/JanDeDobbeleer/oh-my-posh/releases/latest/download/posh-linux-amd64 -O /usr/local/bin/oh-my-posh
 sudo chmod +x /usr/local/bin/oh-my-posh
@@ -18,7 +35,8 @@ cd ~/repos
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
 git clone https://github.com/tarcisioribeiro/Password_Manager.git
 
-cp ~/repos/Terminal/customization/zsh/.zshrc ~
+cp ~/repos/Terminal/customization/zsh/ubuntu_zshrc ~
+mv ~/ubuntu_zshrc ~/.zshrc
 cp ~/repos/Terminal/customization/zsh/.zsh_aliases ~
 cp ~/repos/Terminal/customization/git/.gitconfig ~
 cp ~/repos/Terminal/customization/tmux/.tmux.conf ~
