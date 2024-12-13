@@ -33,6 +33,11 @@ cp ~/repos/Terminal/customization/git/.gitconfig ~
 cp ~/repos/Terminal/customization/tmux/.tmux.conf ~
 mkdir -p ~/.config/autostart
 cp ~/repos/Terminal/customization/starship/starship.toml ~/.config
+cd ~/Downloads
+wget https://github.com/dracula/zsh/archive/master.zip
+unzip master.zip
+cp -r zsh-master/dracula.zsh-theme ~/.oh-my-zsh/themes
+cp -r zsh-master/lib ~/.oh-my-zsh/themes/
 
 cp ~/repos/Terminal/customization/bash/logo-ls_Linux_x86_64.tar.gz ~/Downloads
 cd ~/Downloads
