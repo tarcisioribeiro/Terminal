@@ -25,10 +25,10 @@ cd ~/repos
 git clone https://github.com/tarcisioribeiro/ExpenseLit.git
 git clone https://github.com/tarcisioribeiro/Password_Manager.git
 
-cp ~/repos/Terminal/customization/zsh/ubuntu_zshrc ~
-mv ~/ubuntu_zshrc ~/.zshrc
-cp ~/repos/Terminal/customization/zsh/ubuntu_zsh_aliases ~
-mv ~/ubuntu_zsh_aliases ~/.zsh_aliases
+cp ~/repos/Terminal/customization/zsh/ubuntu_server_zshrc ~
+mv ~/ubuntu_server_zshrc ~/.zshrc
+cp ~/repos/Terminal/customization/zsh/ubuntu_server_zsh_aliases ~
+mv ~/ubuntu_server_zsh_aliases ~/.zsh_aliases
 cp ~/repos/Terminal/customization/git/.gitconfig ~
 cp ~/repos/Terminal/customization/tmux/.tmux.conf ~
 mkdir -p ~/.config/autostart
