@@ -38,6 +38,13 @@ wget https://github.com/dracula/zsh/archive/master.zip
 unzip master.zip
 cp -r zsh-master/dracula.zsh-theme ~/.oh-my-zsh/themes
 cp -r zsh-master/lib ~/.oh-my-zsh/themes/
+rm -s zsh-master/
+rm master.zip
+wget https://github.com/dracula/zsh-syntax-highlighting/archive/master.zip
+unzip master.zip
+cp zsh-syntax-highlightning-master/zsh-syntax-highlighting.sh ~/scripts
+rm -r zsh-syntax-highlightning-master/
+rm master.zip
 
 cp ~/repos/Terminal/customization/bash/logo-ls_Linux_x86_64.tar.gz ~/Downloads
 cd ~/Downloads
