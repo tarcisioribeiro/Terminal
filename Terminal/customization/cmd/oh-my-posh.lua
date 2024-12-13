@@ -1,1 +1,0 @@
-load(io.popen('oh-my-posh init cmd --config C:/Users/user/AppData/Local/Programs/oh-my-posh/themes/hotstick.minimal.omp.json'):read("*a"))()
