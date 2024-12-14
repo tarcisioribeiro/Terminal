@@ -10,8 +10,6 @@ blue() {
     echo -e "\033[34m$1\033[0m"
 }
 
-brew install eza glow tldr fd git-delta
-nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
 curl -sS https://starship.rs/install.sh | sh
