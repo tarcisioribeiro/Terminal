@@ -20,16 +20,10 @@ alias mysqldump='mysqldump -uroot -porrARDrdr27!'
 # Postgres SQL
 alias postgres="sudo -i -u postgres"
 
-# Code editing
-# alias vim='nvim'
-
 # ZSH
 alias edit-bash="nvim ~/.bashrc"
 alias reload-bash="source ~/.bashrc"
 
 # Virtualbox
-alias ssh_server="ssh serveruser@192.168.122.217"
-alias start_server="virsh start UbuntuServer"
-
-# Termux
-alias ssh_smartphone="ssh u0_a4@192.168.2.202 -p 8022"
+alias ssh_server="ssh serveruser@192.168.2.210"
+alias start_server="VBoxManage startvm UbuntuServer"
