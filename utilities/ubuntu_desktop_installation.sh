@@ -73,11 +73,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/mast
 curl -sS https://starship.rs/install.sh | sh
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-brew install eza glow tldr fd git-delta
-nvm install 20.17.0
-mv ~/.config/nvim ~/.config/nvim_old
-cp -r ~/repos/Terminal/customization/nvim ~/.config
-
 cd ~
 cp repos/Terminal/customization/zsh/.zshrc ~
 cp repos/Terminal/customization/zsh/.zsh_aliases ~
@@ -86,3 +81,8 @@ cp repos/Terminal/customization/bash/.bash_aliases ~
 cp repos/Terminal/customization/git/.gitconfig ~
 cp repos/Terminal/customization/tmux/.tmux.conf ~
 cp repos/Terminal/customization/starship/starship.toml ~/.config
+
+brew install eza glow tldr fd git-delta
+nvm install 20.17.0
+mv ~/.config/nvim ~/.config/nvim_old
+cp -r ~/repos/Terminal/customization/nvim ~/.config
