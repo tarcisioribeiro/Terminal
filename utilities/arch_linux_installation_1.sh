@@ -19,7 +19,7 @@ sudo pacman -Syu
 green "\nAtualizando o sistema..."
 sleep 3
 
-sudo pacman -S curl wget neofetch fzf fastfetch neofetch nano neovim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor networkmanager bluez bluez-utils blueman openssh ufw cmatrix qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat gnome-tweaks ruby gnome-disk-utility power-profiles-daemon mesa-utils pulseaudio pulseaudio-bluetooth networkmanager virtualbox virtualbox-guest-iso xdg-desktop-portal-wlr
+sudo pacman -S curl wget fzf fastfetch neofetch hyprpaper nano neovim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor networkmanager bluez bluez-utils blueman openssh ufw cmatrix qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat gnome-tweaks ruby gnome-disk-utility power-profiles-daemon mesa-utils pulseaudio pulseaudio-bluetooth networkmanager virtualbox virtualbox-guest-iso xdg-desktop-portal-wlr ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-gnome man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 sudo rm -r yay
@@ -130,36 +130,7 @@ cp ~/repos/Arch_Linux/shell_files/.zshrc ~
 cp ~/repos/Arch_Linux/shell_files/.bash_aliases ~
 cp ~/repos/Arch_Linux/shell_files/.zsh_aliases ~
 
-source .bashrc
+sudo systemctl enable --now ufw.service
+sudo ufw enable
 
-brew install eza glow tldr fd git-delta
-
-sleep 5
-
-nvm install 20.17.0
-
-git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
-mv ~/.config/nvim ~/.config/nvim_old
-cp -r ~/repos/Terminal/customization/nvim ~/.config
-rm -r ~/.config/nvim_old
-
-sudo cp ~/repos/Arch_Linux/fonts/Roboto-Regular.ttf /usr/share/fonts
-
-cd ~
-cp ~/repos/Arch_Linux/wallpapers/*.png ~/Pictures/
-
-cd ~/Downloads/
-wget https://github.com/dracula/gtk/archive/master.zip
-unzip master.zip
-mv gtk-master Dracula
-mv Dracula ~/.themes
-rm master.zip
-cd ~/Downloads
-git clone https://github.com/vinceliuice/Tela-icon-theme.git
-cd Tela-icon-theme
-./install -n dracula
-
-gsettings set org.gnome.desktop.interface font-name "Roboto Regular"
-gsettings set org.gnome.desktop.interface gtk-theme "Dracula"       
-gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
-gsettings set org.gnome.desktop.interface icon-theme "dracula-dark
+blue "\nReinicie o PC e execute o segundo instalador.\n"
