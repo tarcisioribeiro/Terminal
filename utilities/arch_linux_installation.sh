@@ -12,11 +12,14 @@ blue() {
 }
 
 cd ~
-mkdir repos Pictures scripts Downloads Desktop
+mkdir Pictures scripts Downloads Desktop
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 sudo pacman -Syu
-sudo pacman -S curl wget neofetch fzf fastfetch neofetch nano neovim vi btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor networkmanager bluez bluez-utils blueman openssh ufw cmatrix qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat ngrok gnome-tweaks ruby gnome-disk-utility power-profiles-daemon mesa-utils pulseaudio pulseaudio-bluetooth networkmanager virtualbox virtualbox-guest-iso xdg-desktop-portal-wlr nwg-bar, nwg-look ngrok
+green "\nAtualizando o sistema..."
+sleep 3
+
+sudo pacman -S curl wget neofetch fzf fastfetch neofetch nano neovim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor networkmanager bluez bluez-utils blueman openssh ufw cmatrix qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat gnome-tweaks ruby gnome-disk-utility power-profiles-daemon mesa-utils pulseaudio pulseaudio-bluetooth networkmanager virtualbox virtualbox-guest-iso xdg-desktop-portal-wlr
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 sudo rm -r yay
@@ -33,14 +36,6 @@ sleep 3
 sudo nano /etc/bluetooth/main.conf
 sleep 3
 sudo systemctl start bluetooth.service
-
-# Ativando o PulseAudio
-sudo systemctl start pulseaudio
-
-# Ativando o Wi-Fi
-sudo systemctl enable --now networkmanager
-sudo systemctl enable networkmanager  
-sudo systemctl start networkmanager
 
 # Instalando o VirtualBox
 sudo gpasswd -a $USER vboxusers
@@ -68,6 +63,10 @@ cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autost
 cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.sh ~/scripts
 
 chsh -s /usr/bin/zsh
+
+sleep 3
+green "\nAlterando o shell do sistema...\n"
+sleep 3
 zsh
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -98,13 +97,25 @@ rm logo-ls_Linux_x86_64.tar.gz
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 # NVM
+blue "\nInstalando o NVM...\n"
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
+sleep 3
+
 # Brew
+blue "\nInstalando o HomeBrew...\n"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sleep 3
+
 # Oh My Bash
+blue "\nInstalando o Oh My Bash...\n"
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+sleep 3
+
 # Starship
+blue "\nInstalando o Starship...\n"
 curl -sS https://starship.rs/install.sh | sh
+sleep 3
+
 # Tmux Plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
@@ -122,6 +133,9 @@ cp ~/repos/Arch_Linux/shell_files/.zsh_aliases ~
 source .bashrc
 
 brew install eza glow tldr fd git-delta
+
+sleep 5
+
 nvm install 20.17.0
 
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
@@ -148,4 +162,4 @@ cd Tela-icon-theme
 gsettings set org.gnome.desktop.interface font-name "Roboto Regular"
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"       
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
-gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
+gsettings set org.gnome.desktop.interface icon-theme "dracula-dark
