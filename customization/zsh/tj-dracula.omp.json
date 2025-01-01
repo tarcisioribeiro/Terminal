@@ -117,6 +117,7 @@
             "cache_duration": "none"
           },
           "leading_diamond": "\ue0b2",
+	  "trailing_diamond": "\ue0b4",
           "template": "<#193549></> \ue23a ",
           "foreground": "#f8f8f2",
           "background": "#00897b",
@@ -138,7 +139,6 @@
           "foreground": "#906cff",
           "background": "#f8f8f2",
           "leading_diamond": "\ue0b2",
-          "trailing_diamond": "\ue0b4",
           "type": "python",
           "style": "diamond"
         }

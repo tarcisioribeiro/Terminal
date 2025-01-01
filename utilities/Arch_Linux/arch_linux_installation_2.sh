@@ -32,8 +32,19 @@ unzip master.zip
 cp zsh-syntax-highlighting-master/zsh-syntax-highlighting.sh ~/scripts/
 rm master.zip
 sudo rm -r zsh-syntax-highlighting-master
+cd ~/Downloads
+mkdir -p  $HOME/.local/share/gedit/styles/
+wget https://raw.githubusercontent.com/dracula/gedit/master/dracula-46.xml -O dracula.xml
+mv dracula.xml $HOME/.local/share/gedit/styles/
 
 gsettings set org.gnome.desktop.interface font-name "Roboto Regular"
 gsettings set org.gnome.desktop.interface gtk-theme "Dracula"       
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
+
+sudo pacman -S python-pip
+
+rmdir Documentos Imagens Vídeos Músicas Público Modelos
+
+flatpak install flathub io.github.shiftey.Desktop
+flatpak install flathub org.gimp.GIMP
