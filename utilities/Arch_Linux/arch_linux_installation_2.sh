@@ -1,21 +1,14 @@
 #!/usr/bin/bash
 brew install eza glow tldr fd git-delta
-
-sleep 5
-
 nvm install 20.17.0
-
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 mv ~/.config/nvim ~/.config/nvim_old
 cp -r ~/repos/Terminal/customization/nvim ~/.config
 sudo rm -r ~/.config/nvim_old
-
 sudo cp ~/repos/Arch_Linux/fonts/Roboto-Regular.ttf /usr/share/fonts
-
 cd ~
 cp ~/repos/Arch_Linux/wallpapers/*.png ~/Pictures/
 cp ~/repos/Arch_Linux/scripts/*.sh ~/scripts/
-
 cd ~/Downloads/
 wget https://github.com/dracula/gtk/archive/master.zip
 unzip master.zip
@@ -37,16 +30,10 @@ cd ~/Downloads
 mkdir -p  $HOME/.local/share/gedit/styles/
 wget https://raw.githubusercontent.com/dracula/gedit/master/dracula-46.xml -O dracula.xml
 mv dracula.xml $HOME/.local/share/gedit/styles/
-
-gsettings set org.gnome.desktop.interface font-name "Roboto Regular"
-gsettings set org.gnome.desktop.interface gtk-theme "Dracula"       
+gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
-
 gsettings set org.gnome.desktop.interface font-name "JetBrainsMono NFM"
-
-sudo pacman -S python-pip
-
 cd ~
 rmdir "Documentos"
 rmdir "Imagens"
@@ -54,5 +41,3 @@ rmdir "Músicas"
 rmdir "Público"
 rmdir "Modelos"
 rmdir "Vídeos"
-     
-flatpak install flathub io.github.shiftey.Desktop

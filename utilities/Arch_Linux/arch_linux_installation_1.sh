@@ -19,19 +19,50 @@ sudo pacman -Syu
 green "\nAtualizando o sistema..."
 sleep 3
 
-sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim btop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon mesa-utils xdg-desktop-portal-wlr ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-gnome man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel man-db net-tools
+sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim vim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi dolphin kate firefox flatpak python3 python-pip vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-kde-agent man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel polkit gnome gsettings-desktop-schemas nautilus gedit kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon pavucontrol wpa_supplicant
 
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+cd ~
 sudo rm -r yay
 
 sudo gpasswd -a $USER input
 
-sudo ip addr add 192.168.2.200/24 dev enp3s0
-sudo ip route add default via 192.168.2.1
+blue "\nAtivando o wifi...\n"
+sleep 3
 
-sudo ip addr add 192.168.2.201/24 dev wlan0
+sudo systemctl enable systemd-networkd
+sudo systemctl start systemd-networkd
+
+touch 20-static.network
+echo '[Match]' >> 20-static.network
+echo Name=enp3s0 >> 20-static.network
+echo '' >> 20-static.network
+echo '[Network]' >> 20-static.network
+echo 'Address=192.168.2.200/24' >> 20-static.network
+echo 'Gateway=192.168.2.1' >> 20-static.network
+echo 'DNS=8.8.8.8 8.8.4.4' >> 20-static.network
+sudo mv 20-static.network /etc/systemd/network/
+
+sudo systemctl restart systemd-networkd
+
+# sudo ip addr del 192.168.2.100/24 dev enp3s0
+
+sudo systemctl start iwd
+sudo systemctl enable iwd
+
+touch wpa_supplicant.conf
+
+echo 'ctrl_interface=/run/wpa_supplicant' >> wpa_supplicant.conf
+echo 'update_config=1' >> wpa_supplicant.conf
+echo '' >> wpa_supplicant.conf
+echo 'network={' >> wpa_supplicant.conf
+echo '    ssid="Tarcisio_5G"' >> wpa_supplicant.conf
+echo '    psk="orrARDrdr27!"' >> wpa_supplicant.conf
+echo '}' >> wpa_supplicant.conf
+
+sudo mv wpa_supplicant.conf /etc/wpa_supplicant/
 
 cd ~/repos
 git clone https://github.com/tarcisioribeiro/Arch_Linux.git
@@ -42,10 +73,15 @@ cp -r ~/repos/Arch_Linux/hyperdots/kitty ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/waybar ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/wofi ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/nwg-bar ~/.config
+cp -r ~/repos/Arch_Linux/hyperdots/btop ~/.config
 
-mkdir -p ~/.config/autostart
-cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autostart
-cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.sh ~/scripts
+blue "\nAtivando o bluetooth...\n"
+sleep 3
+
+sudo pacman -S bluez bluez-utils blueman
+sudo nano /etc/bluetooth/main.conf
+sudo systemctl start bluetooth.service
+sudo systemctl enable bluetooth.service
 
 chsh -s /usr/bin/zsh
 
