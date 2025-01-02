@@ -8,7 +8,7 @@ nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 mv ~/.config/nvim ~/.config/nvim_old
 cp -r ~/repos/Terminal/customization/nvim ~/.config
-rm -r ~/.config/nvim_old
+sudo rm -r ~/.config/nvim_old
 
 sudo cp ~/repos/Arch_Linux/fonts/Roboto-Regular.ttf /usr/share/fonts
 
@@ -44,7 +44,15 @@ gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
 
 sudo pacman -S python-pip
 
-rmdir Documentos Imagens Vídeos Músicas Público Modelos
+rmdir "Documentos"
+rmdir "Imagens"
+rmdir "Músicas"
+rmdir "Público"
+rmdir "Modelos"
+rmdir "Vídeos"
 
+yay -S visual-studio-code-bin
+yay -S google-chrome
+     
 flatpak install flathub io.github.shiftey.Desktop
 flatpak install flathub org.gimp.GIMP

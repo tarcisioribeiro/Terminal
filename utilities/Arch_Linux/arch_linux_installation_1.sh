@@ -19,44 +19,29 @@ sudo pacman -Syu
 green "\nAtualizando o sistema..."
 sleep 3
 
-sudo pacman -S curl wget fzf fastfetch neofetch hyprpaper nano neovim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor networkmanager bluez bluez-utils blueman openssh ufw cmatrix qemu-full virt-manager virt-viewer dnsmasq bridge-utils libguestfs ebtables vde2 openbsd-netcat gnome-tweaks gnome-disk-utility power-profiles-daemon mesa-utils pulseaudio pulseaudio-bluetooth networkmanager virtualbox virtualbox-guest-iso xdg-desktop-portal-wlr ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-gnome man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel man-db net-tools
+sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim btop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi nautilus gedit firefox flatpak python3 vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon mesa-utils xdg-desktop-portal-wlr ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-gnome man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel man-db net-tools
 
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 sudo rm -r yay
 
-# Ativando o modo performance
-sudo systemctl enable --now power-profiles-daemon
-poweprofilesctl set performance
-
-# Ativando o bluetooth
-blue "\nAltere o AutoEnable do Bluetooth.\n"
-sleep 3
-sudo nano /etc/bluetooth/main.conf
-sleep 3
-sudo systemctl start bluetooth.service
-
-# Instalando o VirtualBox
-sudo gpasswd -a $USER vboxusers
-sudo modprobe vboxdrv
-yay -Syy
-yay -S virtualbox-ext-oracle
-sudo systemctl enable vboxweb.service
-sudo systemctl start vboxweb.service
-sudo systemctl enable vboxweb.service
-sudo systemctl start vboxweb.service
-
 sudo gpasswd -a $USER input
+
+sudo ip addr add 192.168.2.200/24 dev enp3s0
+sudo ip route add default via 192.168.2.1
+
+sudo ip addr add 192.168.2.201/24 dev wlan0
 
 cd ~/repos
 git clone https://github.com/tarcisioribeiro/Arch_Linux.git
 
-mdkir -p ~/.config
+mkdir -p ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/hypr ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/kitty ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/waybar ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/wofi ~/.config
+cp -r ~/repos/Arch_Linux/hyperdots/nwg-bar ~/.config
 
 mkdir -p ~/.config/autostart
 cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autostart
@@ -132,5 +117,10 @@ cp ~/repos/Arch_Linux/shell_files/.zsh_aliases ~
 
 sudo systemctl enable --now ufw.service
 sudo ufw enable
+
+sudo systemctl start sshd
+sudo systemctl enable sshd
+
+sudo ufw allow SSH
 
 blue "\nReinicie o PC e execute o segundo instalador.\n"
