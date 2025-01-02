@@ -113,22 +113,6 @@
       "segments": [
         {
           "properties": {
-            "always_enabled": true,
-            "cache_duration": "none"
-          },
-          "leading_diamond": "\ue0b2",
-	  "trailing_diamond": "\ue0b4",
-          "template": "<#193549></> \ue23a ",
-          "foreground": "#f8f8f2",
-          "background": "#00897b",
-          "type": "status",
-          "style": "diamond",
-          "background_templates": [
-            "{{ if .Error }}#e91e63{{ end }}"
-          ]
-        },
-        {
-          "properties": {
             "cache_duration": "none",
             "display_mode": "environment",
             "fetch_version": false,
@@ -141,6 +125,22 @@
           "leading_diamond": "\ue0b2",
           "type": "python",
           "style": "diamond"
+        },
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "leading_diamond": "\ue0b2",
+	        "trailing_diamond": "\ue0b4",
+          "template": "<#193549></> \ue23a ",
+          "foreground": "#f8f8f2",
+          "background": "#00897b",
+          "type": "status",
+          "style": "diamond",
+          "background_templates": [
+            "{{ if .Error }}#e91e63{{ end }}"
+          ]
         }
       ]
     },

@@ -14,6 +14,7 @@ sudo cp ~/repos/Arch_Linux/fonts/Roboto-Regular.ttf /usr/share/fonts
 
 cd ~
 cp ~/repos/Arch_Linux/wallpapers/*.png ~/Pictures/
+cp ~/repos/Arch_Linux/scripts/*.sh ~/scripts/
 
 cd ~/Downloads/
 wget https://github.com/dracula/gtk/archive/master.zip
@@ -42,17 +43,16 @@ gsettings set org.gnome.desktop.interface gtk-theme "Dracula"
 gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
 
+gsettings set org.gnome.desktop.interface font-name "JetBrainsMono NFM"
+
 sudo pacman -S python-pip
 
+cd ~
 rmdir "Documentos"
 rmdir "Imagens"
 rmdir "Músicas"
 rmdir "Público"
 rmdir "Modelos"
 rmdir "Vídeos"
-
-yay -S visual-studio-code-bin
-yay -S google-chrome
      
 flatpak install flathub io.github.shiftey.Desktop
-flatpak install flathub org.gimp.GIMP
