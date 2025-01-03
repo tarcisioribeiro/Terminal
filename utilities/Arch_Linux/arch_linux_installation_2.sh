@@ -58,14 +58,14 @@ green "\nComeçando a instalação do driver de vídeo...\n"
 
 sleep 3
 
-yay -S nvidia-535xx-dkms nvidia-535xx-utils lib32-nvidia-535xx-utils
+yay -S nvidia-550xx-dkms nvidia-550xx-utils lib32-nvidia-550xx-utils
 yay -S nvidia-settings
-
-sudo nano /etc/default/grub
 
 blue "\nAltere a linha do grub GRUB_CMDLINE_LINUX_DEFAULT para GRUB_CMDLINE_LINUX_DEFAULT=quiet splash nvidia-drm.modeset=1.\n"
 
-sleep 3
+sleep 10
+
+sudo nano /etc/default/grub
 
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 
@@ -74,7 +74,7 @@ sudo mkinitcpio -P
 blue "\nAltere MODULES=() para MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm).\n"
 blue "\nAltere a linha HOOKS() removendo a palavra kms.\n"
 
-sleep 6
+sleep 10
 
 sudo mkinitcpio -P
 
@@ -82,9 +82,9 @@ cd ~
 
 wget https://raw.githubusercontent.com/korvahannu/arch-nvidia-drivers-installation-guide/main/nvidia.hook
 
-green "\nAltere a linha Target=nvidia para Target=nvidia-535xx-dkms.\n"
+green "\nAltere a linha Target=nvidia para Target=nvidia-550xx-dkms.\n"
 
-sleep 3
+sleep 10
 
 nano nvidia.hook
 
@@ -94,10 +94,10 @@ git clone https://github.com/wildtruc/nvidia-prime-select.git
 cd nvidia-prime-select
 sudo make install
 
-nvidia-prime-select nvidia
+sudo nvidia-prime-select nvidia
 
-cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.sh scripts
-mkdir -p ~/.config/autostart && cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autostart
+# cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.sh scripts
+# mkdir -p ~/.config/autostart && cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autostart
 
 flatpak install flathub io.github.shiftey.Desktop
 yay -S cava

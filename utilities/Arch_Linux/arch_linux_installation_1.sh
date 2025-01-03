@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-
 red() {
     echo -e "\033[31m$1\033[0m"
 }
@@ -16,14 +15,20 @@ mkdir Pictures scripts Downloads Desktop
 mkdir -p ~/.icons
 mkdir -p ~/.themes
 sudo pacman -Syu
-green "\nAtualizando o sistema..."
+green "\nAtualizando o sistema...\n"
 sleep 3
 
-sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim vim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi dolphin kate firefox flatpak python3 python-pip vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-kde-agent man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel polkit gnome gsettings-desktop-schemas nautilus gedit kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon pavucontrol wpa_supplicant ruby shotcut obsidian
+sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim vim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi dolphin kate firefox flatpak python3 python-pip vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon cliphist wl-clipboard dunst network-manager-applet polkit-gnome man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel polkit gnome gsettings-desktop-schemas nautilus gedit pavucontrol wpa_supplicant shotcut obsidian
 
 sudo pacman -Syu
 
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
+
+blue "\nInstalando o Yay...\n"
+
+sudo usermod -aG wheel,storage,disk $USER
+
+sleep 3
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 cd ~
@@ -50,10 +55,24 @@ sudo mv 20-static.network /etc/systemd/network/
 
 sudo systemctl restart systemd-networkd
 
-# sudo ip addr del 192.168.2.100/24 dev enp3s0
-
+sudo ip addr del 192.168.2.100/24 dev enp3s0
+sudo ip addr del 192.168.2.101/24 dev enp3s0
 sudo systemctl start iwd
 sudo systemctl enable iwd
+
+touch 20-wifi-static.network
+
+echo '[Match]' >> 20-wifi-static.network
+echo 'Name=wlan0' >> 20-wifi-static.network
+echo '' >> 20-wifi-static.network
+echo '[Network]' >> 20-wifi-static.network
+echo 'Address=192.168.2.201/24' >> 20-wifi-static.network
+echo 'Gateway=192.168.2.1' >> 20-wifi-static.network
+echo 'DNS=8.8.8.8 8.8.4.4' >> 20-wifi-static.network
+
+sudo mv 20-wifi-static.network /etc/systemd/network/
+
+sudo systemctl restart systemd-networkd
 
 touch wpa_supplicant.conf
 
@@ -66,6 +85,9 @@ echo '    psk="orrARDrdr27!"' >> wpa_supplicant.conf
 echo '}' >> wpa_supplicant.conf
 
 sudo mv wpa_supplicant.conf /etc/wpa_supplicant/
+
+nmcli device wifi connect Tarcisio_5G password orrARDrdr27!
+nmcli device wifi connect Tarcisio_5G
 
 cd ~/repos
 git clone https://github.com/tarcisioribeiro/Arch_Linux.git
