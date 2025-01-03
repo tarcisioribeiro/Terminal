@@ -1,11 +1,22 @@
 #!/usr/bin/bash
+
+red() {
+    echo -e "\033[31m$1\033[0m"
+}
+green() {
+    echo -e "\033[32m$1\033[0m"
+}
+
+blue() {
+    echo -e "\033[34m$1\033[0m"
+}
+
 brew install eza glow tldr fd git-delta
 nvm install 20.17.0
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
 mv ~/.config/nvim ~/.config/nvim_old
 cp -r ~/repos/Terminal/customization/nvim ~/.config
 sudo rm -r ~/.config/nvim_old
-sudo cp ~/repos/Arch_Linux/fonts/Roboto-Regular.ttf /usr/share/fonts
 cd ~
 cp ~/repos/Arch_Linux/wallpapers/*.png ~/Pictures/
 cp ~/repos/Arch_Linux/scripts/*.sh ~/scripts/
@@ -35,9 +46,58 @@ gsettings set org.gnome.desktop.wm.preferences theme "Dracula"
 gsettings set org.gnome.desktop.interface icon-theme "dracula-dark"
 gsettings set org.gnome.desktop.interface font-name "JetBrainsMono NFM"
 cd ~
+
 rmdir "Documentos"
 rmdir "Imagens"
 rmdir "Músicas"
 rmdir "Público"
 rmdir "Modelos"
 rmdir "Vídeos"
+
+green "\nComeçando a instalação do driver de vídeo...\n"
+
+sleep 3
+
+yay -S nvidia-535xx-dkms nvidia-535xx-utils lib32-nvidia-535xx-utils
+yay -S nvidia-settings
+
+sudo nano /etc/default/grub
+
+blue "\nAltere a linha do grub GRUB_CMDLINE_LINUX_DEFAULT para GRUB_CMDLINE_LINUX_DEFAULT=quiet splash nvidia-drm.modeset=1.\n"
+
+sleep 3
+
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+sudo mkinitcpio -P
+
+blue "\nAltere MODULES=() para MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm).\n"
+blue "\nAltere a linha HOOKS() removendo a palavra kms.\n"
+
+sleep 6
+
+sudo mkinitcpio -P
+
+cd ~
+
+wget https://raw.githubusercontent.com/korvahannu/arch-nvidia-drivers-installation-guide/main/nvidia.hook
+
+green "\nAltere a linha Target=nvidia para Target=nvidia-535xx-dkms.\n"
+
+sleep 3
+
+nano nvidia.hook
+
+sudo mkdir -p /etc/pacman.d/hooks/ && sudo mv ./nvidia.hook /etc/pacman.d/hooks/
+
+git clone https://github.com/wildtruc/nvidia-prime-select.git
+cd nvidia-prime-select
+sudo make install
+
+nvidia-prime-select nvidia
+
+cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.sh scripts
+mkdir -p ~/.config/autostart && cp ~/repos/Arch_Linux/gpu/nvidia-force-full-composition.desktop ~/.config/autostart
+
+flatpak install flathub io.github.shiftey.Desktop
+yay -S cava

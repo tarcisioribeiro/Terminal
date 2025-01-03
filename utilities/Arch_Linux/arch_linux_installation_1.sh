@@ -19,13 +19,16 @@ sudo pacman -Syu
 green "\nAtualizando o sistema..."
 sleep 3
 
-sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim vim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi dolphin kate firefox flatpak python3 python-pip vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-kde-agent man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel polkit gnome gsettings-desktop-schemas nautilus gedit kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon pavucontrol wpa_supplicant
+sudo pacman -S curl wget iwd neofetch hyprpaper nano neovim vim btop htop ttf-dejavu noto-fonts noto-fonts-emoji ttf-liberation gst-libav gst-plugins-good gst-plugins-bad gst-plugins-ugly ffmpeg gstreamer hyprland kitty xdg-desktop-portal xdg-desktop-portal-hyprland zip unzip p7zip unrar tar gzip wofi dolphin kate firefox flatpak python3 python-pip vlc obs-studio zsh tmux waybar bat nm-connection-editor openssh ufw gnome-tweaks gnome-disk-utility power-profiles-daemon ffmpeg gstreamer cliphist wl-clipboard dunst network-manager-applet polkit-kde-agent man-db grim slurp kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon base-devel polkit gnome gsettings-desktop-schemas nautilus gedit kvantum kvantum-qt5 qt5ct qt6ct nwg-look nwg-bar arc-gtk-theme hyprlock hypridle glib2 gnome-settings-daemon pavucontrol wpa_supplicant ruby shotcut obsidian
+
+sudo pacman -Syu
 
 sudo glib-compile-schemas /usr/share/glib-2.0/schemas/
 
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 cd ~
 sudo rm -r yay
+yay -Syu
 
 sudo gpasswd -a $USER input
 
@@ -74,6 +77,7 @@ cp -r ~/repos/Arch_Linux/hyperdots/waybar ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/wofi ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/nwg-bar ~/.config
 cp -r ~/repos/Arch_Linux/hyperdots/btop ~/.config
+cp -r ~/repos/Arch_Linux/hyperdots/cava ~/.config
 
 blue "\nAtivando o bluetooth...\n"
 sleep 3
