@@ -155,8 +155,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# eval "$(oh-my-posh init bash --config ~/.poshthemes/tj-linux.omp.json)"
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 export XDG_DATA_DIRS="/home/linuxbrew/.linuxbrew/share:$XDG_DATA_DIRS"
 

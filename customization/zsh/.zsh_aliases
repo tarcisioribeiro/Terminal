@@ -13,10 +13,6 @@ alias py='python3'
 # Net Tools
 alias ipconfig='ifconfig'
 
-# MySQL
-alias mysql='mysql -uroot -porrARDrdr27!'
-alias mysqldump='mysqldump -uroot -porrARDrdr27!'
-
 # Postgres SQL
 alias postgres="sudo -i -u postgres"
 
