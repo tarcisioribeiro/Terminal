@@ -23,3 +23,4 @@ alias reload-bash="source ~/.bashrc"
 # Virtualbox
 alias ssh_server="ssh serveruser@192.168.2.210"
 alias start_server="VBoxManage startvm UbuntuServer"
+alias show_nvim_keybinds="glow ~/.config/nvim/key_commands.md"

@@ -17,7 +17,7 @@ alias ipconfig='ifconfig'
 alias postgres="sudo -i -u postgres"
 
 # Code editing
-# alias vim='nvim'
+alias show_nvim_keybinds="glow ~/.config/nvim/key_commands.md"
 
 # ZSH
 alias edit-zsh="nvim ~/.zshrc"
