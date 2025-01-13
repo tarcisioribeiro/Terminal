@@ -1,13 +1,14 @@
 #!/usr/bin/bash
-red() {
-    echo -e "\033[31m$1\033[0m"
-}
-green() {
-    echo -e "\033[32m$1\033[0m"
+title_red() {
+    echo -e "\033[31m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
-blue() {
-    echo -e "\033[34m$1\033[0m"
+title_green() {
+    echo -e "\033[32m$(toilet --font pagga --filter border "$1")\033[0m"
+}
+
+title_blue() {
+    echo -e "\033[34m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
@@ -15,6 +16,6 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh | bash
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
-blue "\nSaia do zsh pelo comando exit e carregue o bash.\n"
+title_blue "\nSaia do zsh pelo comando exit e carregue o bash.\n"
 
-sleep 3
+sleep 5

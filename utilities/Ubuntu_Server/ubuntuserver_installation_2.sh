@@ -1,22 +1,23 @@
 #!/usr/bin/bash
-red() {
-    echo -e "\033[31m$1\033[0m"
-}
-green() {
-    echo -e "\033[32m$1\033[0m"
+title_red() {
+    echo -e "\033[31m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
-blue() {
-    echo -e "\033[34m$1\033[0m"
+title_green() {
+    echo -e "\033[32m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
-blue "\nInstalando o OH-My-ZSH..\n"
+title_blue() {
+    echo -e "\033[34m$(toilet --font pagga --filter border "$1")\033[0m"
+}
+
+title_blue "Instalando o OH-My-ZSH.."
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-sleep 1
+sleep 5
 
 cd ~
 mkdir -p ~/repos

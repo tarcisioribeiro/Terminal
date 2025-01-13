@@ -1,13 +1,14 @@
 #!/usr/bin/bash
-red() {
-    echo -e "\033[31m$1\033[0m"
-}
-green() {
-    echo -e "\033[32m$1\033[0m"
+title_red() {
+    echo -e "\033[31m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
-blue() {
-    echo -e "\033[34m$1\033[0m"
+title_green() {
+    echo -e "\033[32m$(toilet --font pagga --filter border "$1")\033[0m"
+}
+
+title_blue() {
+    echo -e "\033[34m$(toilet --font pagga --filter border "$1")\033[0m"
 }
 
 git clone https://github.com/NvChad/starter ~/.config/nvim && nvim
@@ -20,6 +21,6 @@ mv ~/ubuntu_server_bashrc ~/.bashrc
 cp ~/repos/Terminal/customization/bash/ubuntu_server_bash_aliases ~
 mv ~/ubuntu_server_bash_aliases ~/.bash_aliases
 
-blue "\nAgora, faça os testes.\n"
+title_blue "Agora, faça os testes."
 
-sleep 3
+sleep 5

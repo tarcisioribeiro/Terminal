@@ -1,1 +1,1 @@
-# WinTerminal_OhMyPosh
+# Terminal
