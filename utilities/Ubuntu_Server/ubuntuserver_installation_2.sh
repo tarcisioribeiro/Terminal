@@ -1,17 +1,21 @@
 #!/usr/bin/bash
 title_red() {
-    echo -e "\033[31m$(toilet --font pagga --filter border "$1")\033[0m"
+    echo -e "\033[31m$(toilet --font pagga --filter border --width 200 "$1")\033[0m"
 }
 
 title_green() {
-    echo -e "\033[32m$(toilet --font pagga --filter border "$1")\033[0m"
+    echo -e "\033[32m$(toilet --font pagga --filter border --width 200 "$1")\033[0m"
 }
 
 title_blue() {
-    echo -e "\033[34m$(toilet --font pagga --filter border "$1")\033[0m"
+    echo -e "\033[34m$(toilet --font pagga --filter border --width 200 "$1")\033[0m"
 }
 
-title_blue "Instalando o OH-My-ZSH.."
+echo "
+title_red "Instalação - Parte 2"
+
+echo ""
+title_blue "Instalando o OH-My-Zsh.."
 
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
@@ -63,3 +67,6 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 rm nvim-linux64.tar.gz
+
+echo ""
+read -p "Pressione ENTER para confirmar e sair."
