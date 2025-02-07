@@ -16,6 +16,10 @@ alias ipconfig='ifconfig'
 # Postgres SQL
 alias postgres="sudo -i -u postgres"
 
+# MySQL
+alias mysql="mysql -uroot -porrARDrdr27!"
+alias mysqldump="mysqldump -uroot -porrARDrdr27!"
+
 # ZSH
-alias edit-bash="nvim ~/.bashrc"
-alias reload-bash="source ~/.bashrc"
+alias edit-zsh="nvim ~/.zshrc"
+alias reload-zsh="source ~/.zshrc"
